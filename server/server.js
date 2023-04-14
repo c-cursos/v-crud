@@ -14,6 +14,7 @@ app.use( cors() );
 
 const db = mysql.createPool( {
     host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB,
@@ -66,7 +67,7 @@ app.delete( "/reviews/:id", ( req, res ) => {
 
 
 const serverListener = 
-    app.listen( process.env.PORT || serverGate, () => {
+    app.listen( process.env.DB_PORT || serverGate, () => {
         console.warn( 
             `> server: http://localhost:${ serverListener.address().port }` );
 } );
