@@ -1,6 +1,7 @@
 
 
 const   ceo = require( "./src/utils/ceo" ),
+        doQuery = require( "./src/utils/queries" ),
         express = require( "express" ),
         mysql = require( "mysql2" ),
         app = express(),
@@ -14,7 +15,7 @@ app.use( cors() );
 
 const db = mysql.createPool( {
     host: process.env.DB_HOST,
-    port: process.env.DB_PORT,
+    // port: process.env.DB_PORT,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB,
@@ -63,6 +64,10 @@ app.delete( "/reviews/:id", ( req, res ) => {
     );
 } );
 
+app.get( "/clients", ( req, res ) => {
+    doQuery( "select * from victoria_db.book_reviews", res );
+} );
+
 
 
 
@@ -71,7 +76,3 @@ const serverListener =
         console.warn( 
             `> server: http://localhost:${ serverListener.address().port }` );
 } );
-// app.listen( process.env.PORT || serverGate, () => {
-//     console.warn( 
-//         `> server: http://localhost:${ serverListener.address().port }` );
-// } );
