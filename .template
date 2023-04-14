@@ -1,0 +1,251 @@
+
+
+// recover mysql root password:
+https://www.techrepublic.com/article/how-to-set-change-and-recover-a-mysql-root-password/
+
+Server{
+    package{
+        mysql2,
+        express,
+        nodemon,
+        dotenv,
+        body-parser,
+        cors
+    }
+
+    create-a-schema-db{
+        victoria_db
+    }
+
+    create-a-table( book_reviews ) {
+        id: ( pk, nn, ai )
+        [ book_title: char,
+          book_review: text,
+          book_rating: int, ] = ( nn )
+    }
+
+    // =================================
+    Create-an-Express-server( server.js ) {
+        const express = require( "express" ),
+            mysql = require( "mysql" ),
+            app = express(),
+            cors = require( "cors" );
+        require( "dotenv" ).config();
+
+        app.use( express.json() );
+        app.use( cors() );
+    }
+
+    Create-connection-to-database( .dotenv ) {
+        DB_HOST=localhost
+        DB_USER=root
+        DB_PASSWORD=password
+        DB=victoria_db
+    }
+
+    protect-our-configurations{
+        const db = mysql.createPool( {
+            host: process.env.DB_HOST,
+            user: process.env.DB_USER,
+            password: process.env.DB_PASSWORD,
+            database: process.env.DB,
+        } );
+    }
+
+    Create-listener{
+        const serverListener = app.listen( process.env.PORT || "8080", () => {
+            console.warn( `> server: http://localhost:${ serverListener.address().port }` );
+        } );
+    }
+
+    Creating-Routes{
+        "get and return all the book reviews in the MySQL database" {
+            app.get( "/reviews", ( req, res ) => {
+                db.query( "SELECT * FROM book_reviews", ( err, result ) => {
+                  if( err ) {
+                    console.log( err );
+                  } else {
+                    res.send( result );
+                  }
+                } );
+            } );
+        }
+        "POST route which will allow the app to add new data into our database" {
+            app.post( "/reviews", ( req, res ) => {
+                const insertQuery = "INSERT INTO book_reviews SET ?";
+                db.query( insertQuery, req.body, ( err, result ) => {
+                  if( err ) {
+                    console.log( err );
+                  } else {
+                    res.send( "Review Added to Database" );
+                  }
+                } );
+            } );
+        }
+        "user is allowed to update the book_rating and book_review columns" {
+            app.put("/reviews", (req, res) => {
+                const updateQuery =
+                  "UPDATE book_reviews SET book_review = ?, book_rating = ? WHERE id = ?";
+                db.query(
+                  updateQuery,
+                  [req.body.book_review, req.body.book_rating, req.body.id],
+                  (err, result) => {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      res.send(result);
+                    }
+                  }
+                );
+            });
+              
+        }
+        "DELETE"{
+            app.delete("/reviews/:id", (req, res) => {
+                db.query(
+                  "DELETE FROM book_reviews WHERE id = ?",
+                  req.params.id,
+                  (err, result) => {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      res.send(result);
+                    }
+                  }
+                );
+              });
+              
+        }
+    }
+}
+
+client{
+    packages{
+        axios,
+        cors,
+        react-hook-form,
+    }
+
+    app.jsx{
+        import { useState, useEffect } from "react";
+        import axios from "axios";
+        import Add from "../components/add";
+        import Edit from "../components/edit";
+        import Delete from "../components/delete";
+
+        const [reviews, setReviews] = useState([]);
+        const getReviews = () => {
+            axios.get("http://localhost:3000/reviews").then((res) => {
+            setReviews(res.data);
+            });
+        };
+
+        useEffect(() => {
+            getReviews();
+        }, [reviews]);
+
+        export default function App() {
+
+            return(
+                <div className="reviews">
+                    {reviews.map((item) => {
+                        return (
+                            <div className="review">
+                                <h3>Title: {item.book_title}</h3>
+                                <h3>Review: {item.book_review}</h3>
+                                <h3>Rating: {item.book_rating}</h3>
+                                {/* <Add reviews={reviews} setReviews={setReviews} /> */}
+                                <Edit id={item.id} reviews={reviews} setReviews={setReviews} />
+                                <Delete id={item.id} reviews={reviews} setReviews={setReviews} />
+                            </div>
+                        );
+                        })}
+                </div>
+            );
+        }
+
+    }
+
+    components/Add.js{
+        import { useForm } from "react-hook-form";
+        import axios from "axios";
+
+        export default function Add(props) {
+            // 1.
+            const { register, handleSubmit } = useForm();
+            // 2.
+            const onSubmit = (data) => {
+              console.log(data);
+              addReview(data);
+            };
+          
+            // function to make a POST req to the server to insert data to MySQL db
+            const addReview = (data) => {
+              axios.post("http://localhost:3000/reviews", data).then(() => {
+                // 4.
+                props.setReviews([...props.reviews, {data}]);
+              });
+            };
+        }
+          
+    }
+
+    components/Edit.js{
+        // 1.
+        import { useForm } from "react-hook-form";
+        import axios from "axios";
+
+        export default function Edit(props) {
+        // 2.
+        const { register, handleSubmit } = useForm();
+
+        // 3.
+        const onSubmit = (data) => {
+            console.log(data); //{book_review: ..., book_rating: ...}
+            data["id"] = props.id; //add the id from props
+            updateReview(data);
+        };
+
+        // This will update existing data with new submitted values
+        const updateReview = (data) => {
+            axios.put("http://localhost:3000/reviews", data).then((res) => {
+            // 4.
+            props.setReviews(
+                props.reviews.map((item) => {
+                return item.id === props.id? {
+                        id: item.id,
+                        book_title: item.book_title,
+                        book_review: item.book_review,
+                        book_rating: item.book_rating,
+                    }
+                    : item;
+                })
+            );
+            });
+        };
+    }
+    components/Delete.js{
+        // 1.
+        import axios from "axios";
+        export default function Delete(props) {
+        // 2.
+        const deleteReview = () => {
+            axios.delete(`http://localhost:3000/reviews/${props.id}`).then((res) => {
+            // 3.
+            props.setReviews(props.reviews.filter((item) => {
+                return item.id !== props.id;
+                })
+            );
+            });
+        };
+
+        // 4.
+        return (
+            <button className="del-btn" onClick={deleteReview}>
+            Delete Review
+            </button>
+        );
+        }
+
+    }
+}
