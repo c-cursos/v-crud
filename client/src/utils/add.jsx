@@ -1,6 +1,6 @@
 
 
-import ceo from "../utils/ceo";
+import ceo from "./ceo";
 import React from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
