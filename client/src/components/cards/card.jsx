@@ -6,21 +6,41 @@ import "./card.css";
 
 
 
-export default function Card() {
-    const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+export default function Card( props ) {
+    // const [ open, setOpen ] = React.useState( true );
+    const [ open, setOpen ] = useState( true );
+
+    function handleOpen() { setOpen( true ); }
+    function handleClose() { setOpen( false ); }
+
     return (
-      <div>
-        <button className="btn btn-info" onClick={handleOpen}>
-          Comment
-        </button>
-        {open && (
-          <div>
-            <h2>Modal show</h2>
-            <button onClick={handleClose}>Close modal</button>
-          </div>
-        )}
-      </div>
+    <card-home>
+        {/* <Form open={ open } setOpen={ setOpen }
+            book_title={ props.book_title }
+            book_review={ props.book_review }
+            listCard={ props.listCard }
+            setListCard={ props.setListCard }
+            book_rating={ props.book_rating }
+             /> */}
+        <button onClick={ handleOpen }>Open</button>
+        { open && (
+            <h1>oi</h1>
+        ) }
+        <button onClick={ handleClose }>Close</button>
+        <card onClick={ Open } >
+            <t1>{ props.book_title }</t1>
+            <p category="">{ props.book_review }</p>
+            <p cost="">R$ { props.book_rating }</p>
+            oi
+        </card>
+    </card-home>
+
+    // <card onClick={ handleCardClick } >
+    //     <t1>{ props.book_title }</t1>
+    //     <p category="">{ props.book_review }</p>
+    //     <p cost="">R$ { props.book_rating }</p>
+    // </card>
+
+
     );
-  }
+}
