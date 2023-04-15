@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import ceo from "../utils/ceo";
-// import "../public/styles/register/register.css";
-import Card from "../components/cards/card";
+import ceo from "../../utils/ceo";
+import "./App.css";
+import Card from "../../components/cards/card";
 
 function App() {
     const [ values, setValues ] = useState(0),
@@ -38,17 +38,25 @@ function App() {
         <register-body>
             <form>  
                 <t1>Shop</t1>
-                <input type="text" name="book_title"
-                placeholder="Book Title"
-                onChange={ handleValuesChanging } />
-                <input type="text" name="book_review"
-                placeholder="Book Review"
-                onChange={ handleValuesChanging } />
-                <input type="text" name="book_rating"
-                placeholder="Book Rating"
-                onChange={ handleValuesChanging } />
-                <button type="submit" value="Register"
-                onClick={ handleButtonClick }>Register</button>
+                <input 
+                    type="text" 
+                    name="book_title"
+                    placeholder="Book Title"
+                    onChange={ handleValuesChanging } />
+                <input 
+                    type="text" 
+                    name="book_review"
+                    placeholder="Book Review"
+                    onChange={ handleValuesChanging } />
+                <input 
+                    type="text" 
+                    name="book_rating"
+                    placeholder="Book Rating"
+                    onChange={ handleValuesChanging } />
+                <button 
+                    type="submit" 
+                    value="Register"
+                    onClick={ handleButtonClick }>Register</button>
             </form>
 
             <cards>

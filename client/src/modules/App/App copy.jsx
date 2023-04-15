@@ -1,11 +1,11 @@
 
 
-import ceo from "../utils/ceo";
+import ceo from "../../utils/ceo";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Add from "../components/add";
-import Edit from "../components/edit";
-import Delete from "../components/delete";
+import Add from "../../components/add";
+import Edit from "../../components/edit";
+import Delete from "../../components/delete";
 
 
 
