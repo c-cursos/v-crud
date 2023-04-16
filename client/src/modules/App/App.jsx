@@ -23,7 +23,7 @@ function App() {
         
         [ listGames, setListGames ] = useState();
 
-        console.log( listGames );
+        // console.log( "listGames", listGames );
 
     useEffect( () => {
         axios.get( `http://localhost:${ ceo.serverGate }/clients` )
@@ -58,21 +58,19 @@ function App() {
                     value="Register"
                     onClick={ handleButtonClick }>Register</button>
             </form>
-
-            <cards>
-                { typeof listGames !== "undefined" && listGames.map( value => {
-                    return(
-                        <Card key={ value.id }
-                            listCard={ listGames }
-                            setListCard={ setListGames }
-                            id={ value.id }
-                            book_title={ value.book_title }
-                            book_review={ value.book_review }
-                            book_rating={ value.book_rating }
-                        ></Card>
-                    );
-                } ) }
-            </cards>
+            { typeof listGames != "undefined" && listGames.map( value => {
+                console.log( value );
+                return( 
+                    <Card key={ value.id }
+                        listCard={ listGames }
+                        setListCard={ setListGames }
+                        id={ value.id }
+                        book_title={ value.book_title }
+                        book_review={ value.book_review }
+                        book_rating={ value.book_rating }
+                    ></Card>
+                ); }
+            ) }
         </register-body>
         // <>oi</>
     );
