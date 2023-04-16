@@ -26,3 +26,14 @@ card [cost] {
 card [category] {
     color: #27f;
 }
+
+form {
+    display: grid;
+    gap: 1rem;
+    width: 100%;
+    margin: 2.5rem auto;
+    padding: 2rem;
+    background: #212329;
+    box-shadow: #fff2 0 0 0 13px;
+    border-radius: 13px;
+}

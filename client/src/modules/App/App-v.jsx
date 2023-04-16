@@ -37,7 +37,7 @@ function App() {
     return (
         <register-body>
             <form>  
-                <t1>Shop</t1>
+                <t1>App-v Shop</t1>
                 <input 
                     type="text" 
                     name="book_title"

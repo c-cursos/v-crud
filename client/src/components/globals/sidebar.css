@@ -1,0 +1,32 @@
+
+
+sidebar {
+    background: #212329;
+    display: grid;
+    grid-template-rows: 68px 1fr;
+    width: 68px;
+    height: calc( 100vh - 149px );
+    gap: 1rem;
+    padding: 5px;
+    position: fixed;
+    top: 81px;
+    left: 0;
+}
+
+sidebar > header {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+}
+
+sidebar > dummy {
+    display: grid;
+    width: 100%;
+}
+sidebar > dummy > item {
+    display: block;
+    width: 100%;
+    width: fit-content;
+    margin: 0 auto;
+    color: #27f;
+    /* background: #313339; */
+}

@@ -7,7 +7,8 @@ register-body {
     border-radius: 13px;   
 }
 
-register-body > form {
+register-body > form,
+card {
     display: grid;
     gap: 1rem;
     width: 100%;
@@ -18,7 +19,20 @@ register-body > form {
     border-radius: 13px;   
 }
 
-register input[type="text"] {
+form > label {
+    display: grid;
+}
+form > label > h4 {
+    margin: .5rem 0;
+}
+
+form > label > input {
     padding: .5rem;
     border-radius: 5px;
+    border: transparent;
+    width: 100%;
+}
+
+hr {
+    width: 100%;
 }

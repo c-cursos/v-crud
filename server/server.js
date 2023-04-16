@@ -1,3 +1,4 @@
+const { error } = require("console");
 
 
 const   ceo = require( "./src/utils/ceo" ),
@@ -68,8 +69,28 @@ app.get( "/clients", ( req, res ) => {
     doQuery( "select * from victoria_db.book_reviews", res );
 } );
 
-
-
+/* ==[ employees ]======================================== */
+app.get( "/employees", ( c, e, o ) => {
+    const
+        table = "employees";
+        db.query( `SELECT * FROM ${ table };`, ( err, result ) => {
+            err ?
+                console.error( err ) :
+                e.send( result );
+        } );
+} );
+app.post( "/create-employee", ( c, e, o ) => {
+    const 
+        { name, age, gender, email } = c.body,
+        table = "employees";
+    db.query( `insert into ${ table } ( name, age, gender, email ) values ( ?, ?, ?, ? )`,
+    [ name, age, gender, email ],
+    ( err, result ) => {
+        err ?
+            console.log( err ) :
+            e.send( result );
+    } );
+} );
 
 const serverListener = 
     app.listen( process.env.DB_PORT || serverGate, () => {
