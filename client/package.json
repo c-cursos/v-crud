@@ -11,7 +11,7 @@
     "preview": "vite preview"
   },
   "name": "client",
-  "description": "",
+  "description": "React Express MySQL2",
   "dependencies": {
     "axios": "^1.3.5",
     "bcrypt": "^5.1.0",
