@@ -9,7 +9,9 @@ export default function App() {
         [ name, setName ] = useState( "" ),
         [ gender, setGender ] = useState( "" ),
         [ email, setEmail ] = useState( "" ),
+        [ newEmail, setNewEmail ] = useState( "" ),
         [ age, setAge ] = useState( 0 ),
+        [ employeeList, setEmployeeList ] = useState( [] ),
         employees = {
             add: () => {
                 const url = `http://localhost:${ ceo.serverGate }/create-employee`;
@@ -33,9 +35,31 @@ export default function App() {
                 axios.get( url ).then( response => {
                     setEmployeeList( response.data );
                 } );
-            }
+            },
+            updateEmployeeEmail: id => {
+                const url = `http://localhost:${ ceo.serverGate }/update`;
+                axios.put( url, { email: newEmail, id: id } ).then( response => {
+                    setEmployeeList( employeeList.map( employee => {
+                        return(
+                            employee.id == id ? 
+                            { id: employee.id,
+                                name: employee.name,
+                                age: employee.age,
+                                gender: employee.gender,
+                                email: newEmail } : employee
+                        );
+                    } ) );
+                } );
+            },
+            deleteEmployee: id => {
+                const url = `http://localhost:${ ceo.serverGate }/delete/${ id }`;
+                axios.delete( url ).then( response => {
+                    setEmployeeList( employeeList.filter( employee => {
+                        return employee.id != id;
+                    } ) );
+                } );
+            },
         },
-        [ employeeList, setEmployeeList ] = useState( [] ),
         handler = {
             // change: ( e, setV ) => {
             //     setV( e.target.value );
@@ -81,6 +105,12 @@ export default function App() {
                             <p>e-mail: { employee.email } </p>
                             <p>Age: { employee.age } </p>
                             <p>Gender: { employee.gender } </p>
+                            <fieldset>
+                                <input type="email" placeholder="new email"
+                                    onChange={ e => setNewEmail( e.target.value ) } />
+                                <button onClick={ () => { employees.updateEmployeeEmail( employee.id ) } }>update</button>
+                                <button onClick={ () => { employees.deleteEmployee( employee.id ) } }>delete</button>
+                            </fieldset>
                         </card>
                     </> );
                 } ) }
