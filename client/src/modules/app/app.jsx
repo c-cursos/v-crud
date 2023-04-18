@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import ceo from "../../utils/ceo";
-import "./App.css";
+import "./app.css";
 // import Card from "../../components/cards/card";
 
 export default function App() {
