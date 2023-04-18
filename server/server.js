@@ -91,6 +91,34 @@ app.post( "/create-employee", ( c, e, o ) => {
             e.send( result );
     } );
 } );
+app.put( "/update", ( c, e, o ) => {
+    const 
+        { id, email } = c.body,
+        viewsData = {
+            id: id,
+            table: "employees",
+        };
+    db.query( 
+        `update ${ viewsData.table } set email = ? where id = ?`,
+        [ email, id ],
+        ( err, result ) => {
+            err ?
+                console.error( err ) : e.send( result );
+        }
+    );
+} );
+app.delete( "/delete/:id", ( c, e, o ) => {
+    const 
+        id = c.params.id,
+        viewsData = {
+            table: "employees",
+        };
+    db.query( `delete from ${ viewsData.table } where id = ?`,
+    id, ( err, result ) => {
+        err ?
+            console.error( err ) : e.send( result );
+    } );
+} );
 
 const serverListener = 
     app.listen( process.env.DB_PORT || serverGate, () => {
