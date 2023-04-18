@@ -24,99 +24,55 @@ const db = mysql.createPool( {
 
 
 
-app.get( "/reviews", ( req, res ) => {
-    db.query( "SELECT * FROM book_reviews", ( err, result ) => {
-        err ?
-            console.error( err ) :
-            res.send( result );
-    } );
-} );
 
-app.post( "/reviews", ( req, res ) => {
-    const insertQuery = "INSERT INTO book_reviews SET ?";
-    db.query( insertQuery, req.body, ( err, result ) => {
-        err ?
-            console.error( err ) :
-            res.send( "Review Added to Database" );
-    } );
-} );
-
-app.put( "/reviews", ( req, res ) => {
-    const updateQuery =
-      "UPDATE book_reviews SET book_review = ?, book_rating = ? WHERE id = ?";
-    db.query( updateQuery, [
-        req.body.book_review,
-        req.body.book_rating,
-        req.body.id ], ( err, result ) => {
-            err ?
-                console.error( err ) :
-                res.send( result );
-        }
-    );
-} );
-
-app.delete( "/reviews/:id", ( req, res ) => {
-    db.query( "DELETE FROM book_reviews WHERE id = ?",
-    req.params.id, ( err, result ) => {
-        err ?
-          console.error( err ) :
-          res.send( result );
-        }
-    );
-} );
-
-app.get( "/clients", ( req, res ) => {
-    doQuery( "select * from victoria_db.book_reviews", res );
-} );
-
-/* ==[ employees ]======================================== */
-app.get( "/employees", ( c, e, o ) => {
+/* ==[ users routes ]======================================== */
+app.get( "/users", ( req, res, next ) => {
     const
-        table = "employees";
+        table = "users";
         db.query( `SELECT * FROM ${ table };`, ( err, result ) => {
             err ?
                 console.error( err ) :
-                e.send( result );
+                res.send( result );
         } );
 } );
-app.post( "/create-employee", ( c, e, o ) => {
+app.post( "/create-user", ( req, res, next ) => {
     const 
-        { name, age, gender, email } = c.body,
-        table = "employees";
+        { name, age, gender, email } = req.body,
+        table = "users";
     db.query( `insert into ${ table } ( name, age, gender, email ) values ( ?, ?, ?, ? )`,
     [ name, age, gender, email ],
     ( err, result ) => {
         err ?
             console.log( err ) :
-            e.send( result );
+            res.send( result );
     } );
 } );
-app.put( "/update", ( c, e, o ) => {
+app.put( "/update", ( req, res, next ) => {
     const 
-        { id, email } = c.body,
+        { id, email } = req.body,
         viewsData = {
             id: id,
-            table: "employees",
+            table: "users",
         };
     db.query( 
         `update ${ viewsData.table } set email = ? where id = ?`,
         [ email, id ],
         ( err, result ) => {
             err ?
-                console.error( err ) : e.send( result );
+                console.error( err ) : res.send( result );
         }
     );
 } );
-app.delete( "/delete/:id", ( c, e, o ) => {
+app.delete( "/delete/:id", ( req, res, next ) => {
     const 
-        id = c.params.id,
+        id = req.params.id,
         viewsData = {
-            table: "employees",
+            table: "users",
         };
     db.query( `delete from ${ viewsData.table } where id = ?`,
     id, ( err, result ) => {
         err ?
-            console.error( err ) : e.send( result );
+            console.error( err ) : res.send( result );
     } );
 } );
 
@@ -125,3 +81,5 @@ const serverListener =
         console.warn( 
             `> server: http://localhost:${ serverListener.address().port }` );
 } );
+
+module.exports = app;

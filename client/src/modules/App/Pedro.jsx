@@ -11,17 +11,18 @@ export default function App() {
         [ email, setEmail ] = useState( "" ),
         [ newEmail, setNewEmail ] = useState( "" ),
         [ age, setAge ] = useState( 0 ),
-        [ employeeList, setEmployeeList ] = useState( [] ),
-        employees = {
+        [ userList, setUserList ] = useState( [] ),
+        users = {
             add: () => {
-                const url = `http://localhost:${ ceo.serverGate }/create-employee`;
+                const url = `http://localhost:${ ceo.serverGate }/create-user`;
                 axios.post( url, {
                     name: name,
                     age: age,
                     gender: gender,
                     email: email
                 } ).then( () => {
-                    setEmployeeList( [ ...employList,
+                    // setUserList( [ ...employList,
+                    setUserList( [ ...userList,
                     {
                         name: name,
                         age: age,
@@ -31,31 +32,31 @@ export default function App() {
                 } );
             },
             get: () => {
-                const url = `http://localhost:${ ceo.serverGate }/employees`;
+                const url = `http://localhost:${ ceo.serverGate }/users`;
                 axios.get( url ).then( response => {
-                    setEmployeeList( response.data );
+                    setUserList( response.data );
                 } );
             },
-            updateEmployeeEmail: id => {
+            updateUserEmail: id => {
                 const url = `http://localhost:${ ceo.serverGate }/update`;
                 axios.put( url, { email: newEmail, id: id } ).then( response => {
-                    setEmployeeList( employeeList.map( employee => {
+                    setUserList( userList.map( user => {
                         return(
-                            employee.id == id ? 
-                            { id: employee.id,
-                                name: employee.name,
-                                age: employee.age,
-                                gender: employee.gender,
-                                email: newEmail } : employee
+                            user.id == id ? 
+                            { id: user.id,
+                                name: user.name,
+                                age: user.age,
+                                gender: user.gender,
+                                email: newEmail } : user
                         );
                     } ) );
                 } );
             },
-            deleteEmployee: id => {
+            deleteUser: id => {
                 const url = `http://localhost:${ ceo.serverGate }/delete/${ id }`;
                 axios.delete( url ).then( response => {
-                    setEmployeeList( employeeList.filter( employee => {
-                        return employee.id != id;
+                    setUserList( userList.filter( user => {
+                        return user.id != id;
                     } ) );
                 } );
             },
@@ -68,7 +69,7 @@ export default function App() {
 
     return( <register-body>
             <form>  
-                <t1>Pedro Shop</t1>
+                <t1>Users</t1>
                 <label>
                     <h4>Name:</h4>
                     <input type="text"
@@ -93,28 +94,28 @@ export default function App() {
                         placeholder="Email"
                         onChange={ e => { setEmail( e.target.value ) } } />
                 </label>
-                <button onClick={ employees.add }>Add</button>
+                <button onClick={ users.add }>Add</button>
             </form>
             <hr />
-            <employees>
-                <button onClick={ employees.get }>Show employees</button>
-                { employeeList.map( ( employee, key ) => {
+            <users>
+                <button onClick={ users.get }>Show users</button>
+                { userList.map( ( user, key ) => {
                     return( <>
                         <card>
-                            <h3>Name: { employee.name } </h3>
-                            <p>e-mail: { employee.email } </p>
-                            <p>Age: { employee.age } </p>
-                            <p>Gender: { employee.gender } </p>
+                            <h3>Name: { user.name } </h3>
+                            <p>e-mail: { user.email } </p>
+                            <p>Age: { user.age } </p>
+                            <p>Gender: { user.gender } </p>
                             <fieldset>
                                 <input type="email" placeholder="new email"
                                     onChange={ e => setNewEmail( e.target.value ) } />
-                                <button onClick={ () => { employees.updateEmployeeEmail( employee.id ) } }>update</button>
-                                <button onClick={ () => { employees.deleteEmployee( employee.id ) } }>delete</button>
+                                <button onClick={ () => { users.updateUserEmail( user.id ) } }>update</button>
+                                <button onClick={ () => { users.deleteUser( user.id ) } }>delete</button>
                             </fieldset>
                         </card>
                     </> );
                 } ) }
-            </employees>
+            </users>
     </register-body> );
 }
 
