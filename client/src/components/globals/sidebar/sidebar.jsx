@@ -20,7 +20,7 @@ export default function Sidebar() {
 }
 
 ReactDom.createRoot(
-    document.querySelector( "Sidebar" )
+    document.querySelector( "sidebar" )
 ).render(
     <Sidebar />
 );

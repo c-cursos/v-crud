@@ -1,0 +1,18 @@
+
+
+appbar {
+    display: block;
+    width: 100%;
+    height: 81px;
+    position: fixed;
+    top: 0; left: 0;
+    z-index: 9;
+    background: var( --dark0 );
+    filter: var( --appbar-filter-shadow );
+}
+appbar home {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    width: clamp( 100px, 100%, 1230px );
+    height: 81px;
+}
