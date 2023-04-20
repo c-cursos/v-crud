@@ -25,6 +25,9 @@ const db = mysql.createPool( {
 
 
 
+app.get( "/", ( req, res, next ) => {
+    res.send( "oi" );
+} );
 /* ==[ users routes ]======================================== */
 app.get( "/users", ( req, res, next ) => {
     const
