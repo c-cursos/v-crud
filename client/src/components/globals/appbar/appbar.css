@@ -8,11 +8,39 @@ appbar {
     top: 0; left: 0;
     z-index: 9;
     background: var( --dark0 );
+    background: #000;
     filter: var( --appbar-filter-shadow );
 }
-appbar home {
+appbar-body {
     display: grid;
-    grid-template-columns: auto 1fr auto;
-    width: clamp( 100px, 100%, 1230px );
+    grid-template-columns: .1fr 1fr .1fr;
+    width: clamp( 100px, 100%, 1530px );
     height: 81px;
+    margin: 0 auto;
+    gap: 2rem;
+}
+
+appbar-body :nth-child( 1n ) {
+    display: grid;
+    place-items: center;
+}
+
+appbar-logo {
+    height: 100%;
+    max-height: 81px;
+    aspect-ratio: 1 / 1;
+}
+appbar-options {
+    height: 100%;
+}
+appbar-body > nav > menu {
+    grid-auto-flow: column;
+    justify-content: center;
+    height: 100%;
+    margin: 0;
+    padding: 0 1ch;
+    gap: 2rem;
+}
+appbar-body > nav > menu li {
+    list-style: none;
 }

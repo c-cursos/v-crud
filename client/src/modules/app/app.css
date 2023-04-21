@@ -1,14 +1,37 @@
 
 
-register-body {
+app {
     display: grid;
     width: clamp( 100px, 90%, 650px );
     margin: 5rem auto;
     border-radius: 13px;   
 }
 
-register-body > form,
+app > form,
 card {
+    display: block;
+    padding: 8px;
+    width: 100%;
+    margin: 2.5rem auto;
+    clip-path: polygon( 0 32px, 32px 0, 100% 0,
+    100% calc( 100% - 32px ), calc( 100% - 32px ) 100%, 0 100% );
+    background: linear-gradient( 45deg, #000 30%, #ffab00 );
+    border-radius: 15px;   
+    overflow: hidden;
+}
+app > form > form-body,
+card-body {
+    display: grid;
+    gap: 1rem;
+    width: 100%;
+    padding: 2rem;
+    background: #212329;
+    background: #16181c;
+    clip-path: polygon( 0 32px, 32px 0, 100% 0,
+    100% calc( 100% - 32px ), calc( 100% - 32px ) 100%, 0 100% );
+    border-radius: 15px
+}
+/* card {
     display: grid;
     gap: 1rem;
     width: 100%;
@@ -17,16 +40,16 @@ card {
     background: #212329;
     box-shadow: #fff2 0 0 0 13px;
     border-radius: 13px;   
-}
+} */
 
-form > label {
+label {
     display: grid;
 }
-form > label > h4 {
+label > h4 {
     margin: .5rem 0;
 }
 
-form > label > input {
+label > input {
     padding: .5rem;
     border-radius: 5px;
     border: transparent;

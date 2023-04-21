@@ -37,22 +37,27 @@ export default function App() {
                     setUserList( response.data );
                 } );
             },
-            updateUserEmail: id => {
-                const url = `http://localhost:${ ceo.serverGate }/update`;
-                axios.put( url, { email: newEmail, id: id } ).then( response => {
-                    setUserList( userList.map( user => {
-                        return(
-                            user.id == id ? 
-                            { id: user.id,
-                                name: user.name,
-                                age: user.age,
-                                gender: user.gender,
-                                email: newEmail } : user
-                        );
-                    } ) );
-                } );
+            update: {
+                name: {},
+                age: {},
+                gender: {},
+                email: id => {
+                    const url = `http://localhost:${ ceo.serverGate }/update`;
+                    axios.put( url, { email: newEmail, id: id } ).then( response => {
+                        setUserList( userList.map( user => {
+                            return(
+                                user.id == id ? 
+                                { id: user.id,
+                                    name: user.name,
+                                    age: user.age,
+                                    gender: user.gender,
+                                    email: newEmail } : user
+                            );
+                        } ) );
+                    } );
+                },
             },
-            deleteUser: id => {
+            delete: id => {
                 const url = `http://localhost:${ ceo.serverGate }/delete/${ id }`;
                 axios.delete( url ).then( response => {
                     setUserList( userList.filter( user => {
@@ -67,34 +72,36 @@ export default function App() {
             // },
         };
 
-    return( <register-body>
+    return( <>
             <form>  
-                <t1>Users</t1>
-                <label>
-                    <h4>Name:</h4>
-                    <input type="text"
-                        placeholder="Name"
-                        onChange={ e => { setName( e.target.value ) } } />
-                </label>
-                <label>
-                    <h4>Age:</h4>
-                    <input type="number"
-                        placeholder="Age"
-                        onChange={ e => { setAge( e.target.value ) } } />
-                </label>
-                <label>
-                    <h4>Gender:</h4>
-                    <input type="text"
-                        placeholder="Gender"
-                        onChange={ e => { setGender( e.target.value ) } } />
-                </label>
-                <label>
-                    <h4>Email:</h4>
-                    <input type="email"
-                        placeholder="Email"
-                        onChange={ e => { setEmail( e.target.value ) } } />
-                </label>
-                <button onClick={ users.add }>Add</button>
+                <form-body>
+                    <t1>Users</t1>
+                    <label>
+                        <h4>Name:</h4>
+                        <input type="text"
+                            placeholder="Name"
+                            onChange={ e => { setName( e.target.value ) } } />
+                    </label>
+                    <label>
+                        <h4>Age:</h4>
+                        <input type="number"
+                            placeholder="Age"
+                            onChange={ e => { setAge( e.target.value ) } } />
+                    </label>
+                    <label>
+                        <h4>Gender:</h4>
+                        <input type="text"
+                            placeholder="Gender"
+                            onChange={ e => { setGender( e.target.value ) } } />
+                    </label>
+                    <label>
+                        <h4>Email:</h4>
+                        <input type="email"
+                            placeholder="Email"
+                            onChange={ e => { setEmail( e.target.value ) } } />
+                    </label>
+                    <button onClick={ users.add }>Add</button>
+                </form-body>
             </form>
             <hr />
             <users>
@@ -102,21 +109,23 @@ export default function App() {
                 { userList.map( ( user, key ) => {
                     return( <>
                         <card>
-                            <h3>Name: { user.name } </h3>
-                            <p>e-mail: { user.email } </p>
-                            <p>Age: { user.age } </p>
-                            <p>Gender: { user.gender } </p>
-                            <fieldset>
-                                <input type="email" placeholder="new email"
-                                    onChange={ e => setNewEmail( e.target.value ) } />
-                                <button onClick={ () => { users.updateUserEmail( user.id ) } }>update</button>
-                                <button onClick={ () => { users.deleteUser( user.id ) } }>delete</button>
-                            </fieldset>
+                            <card-body>
+                                <h3>Name: { user.name } </h3>
+                                <p>e-mail: { user.email } </p>
+                                <p>Age: { user.age } </p>
+                                <p>Gender: { user.gender } </p>
+                                <fieldset>
+                                    <input type="email" placeholder="new email"
+                                        onChange={ e => setNewEmail( e.target.value ) } />
+                                    <button onClick={ () => { users.update.email( user.id ) } }>update</button>
+                                    <button onClick={ () => { users.delete( user.id ) } }>delete</button>
+                                </fieldset>
+                            </card-body>
                         </card>
                     </> );
                 } ) }
             </users>
-    </register-body> );
+    </> );
 }
 
 

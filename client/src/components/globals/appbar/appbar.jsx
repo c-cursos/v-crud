@@ -8,17 +8,15 @@ import "./appbar.css";
 export default function Appbar() {
     return( <>
         <appbar-body>
-            <appbar-logo></appbar-logo>
+            <appbar-logo>ceo</appbar-logo>
             <nav>
-                <div>
-                    <a href="https://www.letsreact.org/" target="_blank" rel="noreferrer"> 
-                        <img src="LetsReactLogo-hd.png" alt="logo" />
-                    </a>
-                    <a href="/">Home</a>
-                    <a href="/vite-app/src/views/pagina.html">Página</a>
-                </div>
+                <menu>
+                    <li>ite 01</li>
+                    <li>ite 02</li>
+                    <li>ite 03</li>
+                </menu>
             </nav>
-            <appbar-options></appbar-options>
+            <appbar-options>menu</appbar-options>
         </appbar-body>
     </> );
 }
