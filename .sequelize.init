@@ -1,0 +1,43 @@
+
+
+yarn add sequelize express
+yarn add -D sequelize-cli
+
+server.js [
+    app.use(express.urlencoded({ extended: false }));
+
+]
+
+terminal[
+    npx sequelize init
+
+]
+
+ren[
+    config/config.json
+        config/database.js
+]
+
+database.js[
+    module.exports = {
+        username: 'root',
+        password: 'root',
+        database: 'crud_sequelize',
+        host: '127.0.0.1',
+        dialect: 'mysql',
+    }
+]
+
+root[
+    database\/
+    app/
+]
+
+move[
+    migrations/
+        database/migrations/
+    seeders/
+        databse/seeders/
+    models/
+        app/models/
+]
