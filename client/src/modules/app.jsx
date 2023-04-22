@@ -156,10 +156,10 @@ export default function App() {
                     return( <>
                         <card>
                             <card-body>
-                                <t5><strong>Name:</strong> { user.name } <br />
+                                <t6><strong>Name:</strong> { user.name } <br />
                                 <strong>e-mail:</strong> { user.email } <br />
                                 <strong>Age:</strong> { user.age } <br />
-                                <strong>Gender:</strong> { user.gender } </t5>
+                                <strong>Gender:</strong> { user.gender } </t6>
                                 <fieldset>
                                     <legend>User: { user.name.split( " " ).shift() } </legend>
                                     <label> New Name:
