@@ -134,3 +134,10 @@ rotas.js[
     
     app.delete( "/users/:id", ( req, res ) => {} );
 ]
+
+update[
+    app.post( "/register-new-user", async ( req, res ) => {
+      const user = await User.create( req.body );
+      res.json( user );
+    } );
+]
