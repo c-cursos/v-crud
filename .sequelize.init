@@ -1,6 +1,6 @@
 
 
-yarn add sequelize express
+yarn add express mysql2 sequelize 
 yarn add -D sequelize-cli
 
 server.js [
@@ -89,3 +89,30 @@ app/models/index.js[
     
     module.exports = db;
 ]
+
+terminal[
+    npx sequelize migration:create --name=create-users
+]
+
+testar[
+    npx sequelize db:migrate
+]
+
+criação do model de Usuários
+================
+app/models/user.js[
+    module.exports = ( sequelize, DataTypes ) => {
+      const User = sequelize.define( "User", {
+            name: DataTypes.STRING,
+            email: DataTypes.STRING,
+            password: DataTypes.STRING,
+        } );
+    
+      return User;
+    }
+]
+
+root/index.js[
+    const { User } = require( "./app/models" );
+]
+
