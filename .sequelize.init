@@ -113,6 +113,6 @@ app/models/user.js[
 ]
 
 root/index.js[
-    const { User } = require( "./app/models" );
+    const { User } = require( "./app/models/index" );
 ]
 
