@@ -135,9 +135,31 @@ rotas.js[
     app.delete( "/users/:id", ( req, res ) => {} );
 ]
 
-update[
+create[
     app.post( "/register-new-user", async ( req, res ) => {
       const user = await User.create( req.body );
       res.json( user );
+    } );
+]
+
+read[
+    app.get( "/find-user/:id", ( req, res ) => {
+      res.json( `user: ${id} found` );
+    } );
+    
+    app.get( "/findall-users" , ( req, res ) => {
+      res.json( "display users list" );
+    } );
+]
+
+edit[
+    app.put( "/update-user/:id", ( req, res ) => {
+      res.json( "user updated" );
+    } );
+]
+
+delete user[
+    app.delete( "/delete-user/:id", ( req, res ) => {
+      res.json( "user deleted" );
     } );
 ]
