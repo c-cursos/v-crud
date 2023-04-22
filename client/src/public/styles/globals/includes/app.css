@@ -15,7 +15,7 @@ card {
     margin: 2.5rem auto;
     clip-path: polygon( 0 32px, 32px 0, 100% 0,
     100% calc( 100% - 32px ), calc( 100% - 32px ) 100%, 0 100% );
-    background: linear-gradient( 45deg, #000 30%, #ffab00 );
+    background: linear-gradient( 45deg, #0005 30%, #ffab00cc );
     border-radius: 15px;   
     overflow: hidden;
 }
@@ -31,16 +31,7 @@ card-body {
     100% calc( 100% - 32px ), calc( 100% - 32px ) 100%, 0 100% );
     border-radius: 15px
 }
-/* card {
-    display: grid;
-    gap: 1rem;
-    width: 100%;
-    margin: 2.5rem auto;
-    padding: 2rem;
-    background: #212329;
-    box-shadow: #fff2 0 0 0 13px;
-    border-radius: 13px;   
-} */
+
 
 label {
     display: grid;
@@ -49,13 +40,21 @@ label > h4 {
     margin: .5rem 0;
 }
 
-label > input {
+label > input,
+fieldset input {
     padding: .5rem;
     border-radius: 5px;
     border: transparent;
     width: 100%;
+    background: #313339;
+}
+
+fieldset {
+    display: grid;
+    gap: 1rem;
 }
 
 hr {
     width: 100%;
 }
+

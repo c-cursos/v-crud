@@ -2,7 +2,7 @@
 
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./app/app";
+import App from "./app";
 import Appbar from "../components/globals/appbar/appbar";
 // import Footer from "../components/globals/footer/footer";
 import Sidebar from "../components/globals/sidebar/sidebar";

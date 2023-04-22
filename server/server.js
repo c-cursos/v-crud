@@ -52,7 +52,23 @@ app.post( "/create-user", ( req, res, next ) => {
             res.send( result );
     } );
 } );
-app.put( "/update", ( req, res, next ) => {
+app.put( "/update-user-name", ( req, res, next ) => {
+    const 
+        { id, name } = req.body,
+        viewsData = {
+            id: id,
+            table: "users",
+        };
+    db.query( 
+        `update ${ viewsData.table } set name = ? where id = ?`,
+        [ name, id ],
+        ( err, result ) => {
+            err ?
+                console.error( err ) : res.send( result );
+        }
+    );
+} );
+app.put( "/update-user-email", ( req, res, next ) => {
     const 
         { id, email } = req.body,
         viewsData = {
@@ -62,6 +78,38 @@ app.put( "/update", ( req, res, next ) => {
     db.query( 
         `update ${ viewsData.table } set email = ? where id = ?`,
         [ email, id ],
+        ( err, result ) => {
+            err ?
+                console.error( err ) : res.send( result );
+        }
+    );
+} );
+app.put( "/update-user-age", ( req, res, next ) => {
+    const 
+        { id, age } = req.body,
+        viewsData = {
+            id: id,
+            table: "users",
+        };
+    db.query( 
+        `update ${ viewsData.table } set age = ? where id = ?`,
+        [ age, id ],
+        ( err, result ) => {
+            err ?
+                console.error( err ) : res.send( result );
+        }
+    );
+} );
+app.put( "/update-user-gender", ( req, res, next ) => {
+    const 
+        { id, gender } = req.body,
+        viewsData = {
+            id: id,
+            table: "users",
+        };
+    db.query( 
+        `update ${ viewsData.table } set gender = ? where id = ?`,
+        [ gender, id ],
         ( err, result ) => {
             err ?
                 console.error( err ) : res.send( result );

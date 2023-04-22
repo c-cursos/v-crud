@@ -62,7 +62,7 @@ app/models/index.js[
         fs = require( "fs" ),
         path = require( "path" ),
         Sequelize = require( "sequelize" ),
-        config = require(" ../../config/database.js" ),
+        config = require( " ../../config/database.js" ),
         db = {},
         sequelize = new Sequelize( config );
     
@@ -75,13 +75,13 @@ app/models/index.js[
         ).forEach( file => {
             const model = sequelize.import( path.join( __dirname, file )
         );
-        db[model.name] = model;
+        db[ model.name ] = model;
     } );
     
     Object.keys( db ).forEach( modelName => {
-      if( db[ modelName ].associate ) {
-        db[ modelName ].associate( db );
-      }
+        if( db[ modelName ].associate ) {
+            db[ modelName ].associate( db );
+        }
     } );
     
     db.sequelize = sequelize;
@@ -98,68 +98,71 @@ testar[
     npx sequelize db:migrate
 ]
 
-criação do model de Usuários
+Model de Usuários:
 ================
 app/models/user.js[
     module.exports = ( sequelize, DataTypes ) => {
-      const User = sequelize.define( "User", {
+        const User = sequelize.define( "User", {
             name: DataTypes.STRING,
             email: DataTypes.STRING,
             password: DataTypes.STRING,
         } );
     
-      return User;
+        return User;
     }
 ]
 
 root/index.js[
     const { User } = require( "./app/models/index" );
     
-    /* criacao de um usuário "abaixo da linha do body parser
-    */
+    /* criacao de um usuário "abaixo da linha do body parser */
     User.create( { name: "Nome", email: "email@email.com", password: "password" } );
 ]
 
 
 
-Criando o CRUD de Usuários
+CRUD de Usuários:
 ==============
 rotas.js[
+    /* create */
     app.post( "/users", ( req, res ) => {} );
     
+    /* read */
     app.get( "/users", ( req, res ) => {} );
     app.get( "/users/:id", ( req, res ) => {} );
     
+    /* update */
     app.put( "/users/:id", ( req, res ) => {} );
     
+    /* delete */
     app.delete( "/users/:id", ( req, res ) => {} );
 ]
 
 create[
     app.post( "/register-new-user", async ( req, res ) => {
-      const user = await User.create( req.body );
-      res.json( user );
+        const user = await User.create( req.body );
+        res.json( user );
     } );
 ]
 
 read[
     app.get( "/find-user/:id", ( req, res ) => {
-      res.json( `user: ${id} found` );
+        res.json( `user: ${id} found` );
     } );
     
     app.get( "/findall-users" , ( req, res ) => {
-      res.json( "display users list" );
+        res.json( "display users list" );
     } );
 ]
 
 edit[
     app.put( "/update-user/:id", ( req, res ) => {
-      res.json( "user updated" );
+        res.json( "user updated" );
     } );
 ]
 
 delete user[
     app.delete( "/delete-user/:id", ( req, res ) => {
-      res.json( "user deleted" );
+        res.json( "user deleted" );
     } );
 ]
