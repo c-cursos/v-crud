@@ -1,22 +1,40 @@
 
 
-import React from "react";
+import React, { useState } from "react";
 import ReactDom from "react-dom/client";
+import { NavLink } from "react-router-dom";
 import "./appbar.css";
 
 
 export default function Appbar() {
+    const 
+        [ openned, setOpenned ] = useState( false );
+
     return( <>
         <appbar-body>
-            <appbar-logo>ceo</appbar-logo>
-            <nav>
-                <menu>
-                    <li>ite 01</li>
-                    <li>ite 02</li>
-                    <li>ite 03</li>
+            <appbar-brand
+                    visible={ `${ openned && "active" }` }
+                    onClick={ () => setOpenned( !openned ) } >
+                ceo
+            </appbar-brand>
+            <appbar-menu>
+                <menu className={ `${ openned && "is-active" }` }>
+                    {/* <NavLink to="/"> */}
+                        Página Principal
+                    {/* </NavLink> */}
+
+                    {/* <NavLink to="/about" > */}
+                        Sobre
+                    {/* </NavLink> */}
+
+                    {/* <NavLink to="/profile" > */}
+                        Perfil
+                    {/* </NavLink> */}
                 </menu>
-            </nav>
-            <appbar-options>menu</appbar-options>
+            </appbar-menu>
+            <appbar-options>
+                menu
+            </appbar-options>
         </appbar-body>
     </> );
 }
