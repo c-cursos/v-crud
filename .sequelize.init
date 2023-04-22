@@ -114,5 +114,9 @@ app/models/user.js[
 
 root/index.js[
     const { User } = require( "./app/models/index" );
+    
+    /* criacao de um usuário "abaixo da linha do body parser
+    */
+    User.create( { name: "Nome", email: "email@email.com", password: "password" });
 ]
 
