@@ -4,7 +4,7 @@ yarn add sequelize express
 yarn add -D sequelize-cli
 
 server.js [
-    app.use(express.urlencoded({ extended: false }));
+    app.use( express.urlencoded( { extended: false } ) );
 
 ]
 
@@ -20,16 +20,16 @@ ren[
 
 database.js[
     module.exports = {
-        username: 'root',
-        password: 'root',
-        database: 'crud_sequelize',
-        host: '127.0.0.1',
-        dialect: 'mysql',
+        username: "root",
+        password: "root",
+        database: "crud_sequelize",
+        host: "127.0.0.1",
+        dialect: "mysql",
     }
 ]
 
 root[
-    database\/
+    database/
     app/
 ]
 
