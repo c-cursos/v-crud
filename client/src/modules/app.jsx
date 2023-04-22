@@ -24,14 +24,15 @@ export default function App() {
                     gender: gender,
                     email: email
                 } ).then( () => {
-                    // setUserList( [ ...employList,
-                    setUserList( [ ...userList,
-                    {
-                        name: name,
-                        age: age,
-                        gender: gender,
-                        email: email
-                    }, ] );
+                    setUserList( [
+                        ...userList,
+                        {
+                            name: name,
+                            age: age,
+                            gender: gender,
+                            email: email
+                        },
+                    ] );
                 } );
             },
             get: () => {
@@ -160,6 +161,7 @@ export default function App() {
                                 <p>Age: { user.age } </p>
                                 <p>Gender: { user.gender } </p>
                                 <fieldset>
+                                    <legend>Updates { user.name.split( " " ).shift() } </legend>
                                     <label> New Name:
                                         <input type="text" placeholder="new name"
                                             onChange={ e => setNewName( e.target.value ) } />
