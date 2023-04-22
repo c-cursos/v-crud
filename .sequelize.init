@@ -21,7 +21,7 @@ ren[
 database.js[
     module.exports = {
         username: "root",
-        password: "root",
+        password: "password",
         database: "crud_sequelize",
         host: "127.0.0.1",
         dialect: "mysql",
@@ -40,4 +40,48 @@ move[
         databse/seeders/
     models/
         app/models/
+]
+
+root[
+    .sequelizerc
+]
+
+.sequelizerc[
+    const path = require('path');
+
+    module.exports = {
+        "config": path.resolve( "config", "database.js" ),
+        "models-path": path.resolve( "app", "models" ),
+        "seeders-path": path.resolve( "database", "seeders" ),
+        "migrations-path": path.resolve( "database", "migrations" ),
+    };
+]
+
+app/models/index.js[
+    const 
+        fs = require( "fs" ),
+        path = require( "path" ),
+        Sequelize = require( "sequelize" ),
+        config = require(" ../../config/database.js" ),
+        db = {},
+        sequelize = new Sequelize( config );
+    
+    fs.readdirSync( __dirname ).filter( file => (
+        file.indexOf( "." ) !== 0 ) && ( 
+        file !== path.basename( __filename ) ) && (
+        file.slice( -3 ) === ".js" ) ).forEach( file => {
+            const model = sequelize.import( path.join( __dirname, file ) );
+        db[model.name] = model;
+    } );
+    
+    Object.keys( db ).forEach( modelName => {
+      if( db[ modelName ].associate ) {
+        db[ modelName ].associate( db );
+      }
+    } );
+    
+    db.sequelize = sequelize;
+    db.Sequelize = Sequelize;
+    
+    module.exports = db;
 ]
