@@ -156,12 +156,12 @@ export default function App() {
                     return( <>
                         <card>
                             <card-body>
-                                <h3>Name: { user.name } </h3>
-                                <p>e-mail: { user.email } </p>
-                                <p>Age: { user.age } </p>
-                                <p>Gender: { user.gender } </p>
+                                <t5><strong>Name:</strong> { user.name } <br />
+                                <strong>e-mail:</strong> { user.email } <br />
+                                <strong>Age:</strong> { user.age } <br />
+                                <strong>Gender:</strong> { user.gender } </t5>
                                 <fieldset>
-                                    <legend>Updates { user.name.split( " " ).shift() } </legend>
+                                    <legend>User: { user.name.split( " " ).shift() } </legend>
                                     <label> New Name:
                                         <input type="text" placeholder="new name"
                                             onChange={ e => setNewName( e.target.value ) } />
