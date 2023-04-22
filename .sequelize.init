@@ -117,6 +117,6 @@ root/index.js[
     
     /* criacao de um usuário "abaixo da linha do body parser
     */
-    User.create( { name: "Nome", email: "email@email.com", password: "password" });
+    User.create( { name: "Nome", email: "email@email.com", password: "password" } );
 ]
 
