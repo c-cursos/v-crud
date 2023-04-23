@@ -42,9 +42,11 @@ appbar-body > appbar-menu > menu {
     padding: 0 1ch;
     gap: 2rem;
 }
-appbar-body > appbar-menu > menu li,
 appbar-body > appbar-menu > menu a {
     list-style: none;
     color: #fff;
     text-decoration: none;
+}
+appbar-body > appbar-menu > menu a:hover {
+    color: #905;
 }
