@@ -34,7 +34,7 @@ appbar-brand {
 appbar-options {
     height: 100%;
 }
-appbar-body > appbar-nav > menu {
+appbar-body > appbar-menu > menu {
     grid-auto-flow: column;
     justify-content: center;
     height: 100%;
@@ -42,8 +42,9 @@ appbar-body > appbar-nav > menu {
     padding: 0 1ch;
     gap: 2rem;
 }
-appbar-body > appbar-nav > menu li,
-appbar-body > appbar-nav > menu NavLink {
+appbar-body > appbar-menu > menu li,
+appbar-body > appbar-menu > menu a {
     list-style: none;
     color: #fff;
+    text-decoration: none;
 }

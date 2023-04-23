@@ -6,7 +6,7 @@ import "./sidebar.css";
 
 
 export default function Sidebar() {
-    return( <>
+    return( <sidebar>
         <sidebar-logo>Logo</sidebar-logo>
         <sidebar-body>
             <item>01</item>
@@ -16,12 +16,12 @@ export default function Sidebar() {
             <item>05</item>
             <item>06</item>
         </sidebar-body>
-    </> );
+    </sidebar> );
 }
 
-ReactDom.createRoot(
-    document.querySelector( "sidebar" )
-).render(
-    <Sidebar />
-);
+// ReactDom.createRoot(
+//     document.querySelector( "sidebar" )
+// ).render(
+//     <Sidebar />
+// );
 

@@ -2,15 +2,18 @@
 
 import React, { useState } from "react";
 import ReactDom from "react-dom/client";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./appbar.css";
+import Home from "../../../views/home";
+import Sobre from "../../../views/sobre";
+import About from "../../../views/about";
 
 
 export default function Appbar() {
     const 
         [ openned, setOpenned ] = useState( false );
 
-    return( <>
+    return( <appbar>
         <appbar-body>
             <appbar-brand
                     visible={ `${ openned && "active" }` }
@@ -19,29 +22,29 @@ export default function Appbar() {
             </appbar-brand>
             <appbar-menu>
                 <menu className={ `${ openned && "is-active" }` }>
-                    {/* <NavLink to="/"> */}
+                    <Link to="/">
                         Página Principal
-                    {/* </NavLink> */}
+                    </Link>
 
-                    {/* <NavLink to="/about" > */}
+                    <Link to="/sobre" >
                         Sobre
-                    {/* </NavLink> */}
+                    </Link>
 
-                    {/* <NavLink to="/profile" > */}
-                        Perfil
-                    {/* </NavLink> */}
+                    <Link to="/about" >
+                        About
+                    </Link>
                 </menu>
             </appbar-menu>
             <appbar-options>
                 menu
             </appbar-options>
         </appbar-body>
-    </> );
+    </appbar> );
 }
 
-ReactDom.createRoot(
-    document.querySelector( "appbar" )
-).render(
-    <Appbar />
-);
+    // ReactDom.createRoot(
+    //     document.querySelector( "appbar" )
+    // ).render(
+    //     <Appbar />
+    // );
 

@@ -1,8 +1,14 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { Route, Routes } from "react-router-dom";
 import axios from "axios";
 import ceo from "../utils/ceo";
 import "../public/styles/globals/global.css";
-// import Card from "../../components/cards/card";
+// import * as c from "../controllers/users";
+import Appbar from "../components/globals/appbar/appbar";
+import Sidebar from "../components/globals/sidebar/sidebar";
+import Home from "../views/home";
+import Sobre from "../views/sobre";
+import About from "../views/about";
 
 export default function App() {
     const 
@@ -17,7 +23,7 @@ export default function App() {
         [ userList, setUserList ] = useState( [] ),
         users = {
             add: () => {
-                const url = `http://localhost:${ ceo.serverGate }/create-user`;
+                const url = `${ ceo.host }${ ceo.serverGate }/users/create-user`;
                 axios.post( url, {
                     name: name,
                     age: age,
@@ -36,14 +42,14 @@ export default function App() {
                 } );
             },
             get: () => {
-                const url = `http://localhost:${ ceo.serverGate }/users`;
+                const url = `${ ceo.host }${ ceo.serverGate }/users`;
                 axios.get( url ).then( response => {
                     setUserList( response.data );
                 } );
             },
             update: {
                 name: id => {
-                    const url = `http://localhost:${ ceo.serverGate }/update-user-name`;
+                    const url = `${ ceo.host }${ ceo.serverGate }/users/update-user-name`;
                     axios.put( url, { name: newName, id: id } ).then( response => {
                         setUserList( userList.map( user => {
                             return(
@@ -58,7 +64,7 @@ export default function App() {
                     } );
                 },
                 age: id => {
-                    const url = `http://localhost:${ ceo.serverGate }/update-user-age`;
+                    const url = `${ ceo.host }${ ceo.serverGate }/users/update-user-age`;
                     axios.put( url, { age: newAge, id: id } ).then( response => {
                         setUserList( userList.map( user => {
                             return(
@@ -73,7 +79,7 @@ export default function App() {
                     } );
                 },
                 gender: id => {
-                    const url = `http://localhost:${ ceo.serverGate }/update-user-gender`;
+                    const url = `${ ceo.host }${ ceo.serverGate }/users/update-user-gender`;
                     axios.put( url, { gender: newGender, id: id } ).then( response => {
                         setUserList( userList.map( user => {
                             return(
@@ -88,7 +94,7 @@ export default function App() {
                     } );
                 },
                 email: id => {
-                    const url = `http://localhost:${ ceo.serverGate }/update-user-email`;
+                    const url = `${ ceo.host }${ ceo.serverGate }/users/update-user-email`;
                     axios.put( url, { email: newEmail, id: id } ).then( response => {
                         setUserList( userList.map( user => {
                             return(
@@ -104,7 +110,7 @@ export default function App() {
                 },
             },
             delete: id => {
-                const url = `http://localhost:${ ceo.serverGate }/delete/${ id }`;
+                const url = `${ ceo.host }${ ceo.serverGate }/users/delete/${ id }`;
                 axios.delete( url ).then( response => {
                     setUserList( userList.filter( user => {
                         return user.id != id;
@@ -119,6 +125,15 @@ export default function App() {
         };
 
     return( <>
+        <Appbar />
+        <Sidebar />
+        <Routes>
+            <Route path="/" element={ <Home /> } />
+            <Route path="/about" element={ <About /> } />
+            <Route path="/sobre" element={ <Sobre /> } />
+        </Routes>
+        <main>
+        <app>
             <form>  
                 <form-body>
                     <t1>Users</t1>
@@ -153,7 +168,7 @@ export default function App() {
             <users>
                 <button onClick={ users.get }>Show users</button>
                 { userList.map( ( user, key ) => {
-                    return( <>
+                    return( <app>
                         <card>
                             <card-body>
                                 <t6><strong>Name:</strong> { user.name } <br />
@@ -190,10 +205,14 @@ export default function App() {
                                 </fieldset>
                             </card-body>
                         </card>
-                    </> );
+                    </app> );
                 } ) }
             </users>
+        </app>
+        </main>
     </> );
 }
+
+
 
 

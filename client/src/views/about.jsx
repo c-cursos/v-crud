@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import ceo from "../utils/ceo";
-import "./app.css";
 
 
-export default About = () => {
-    const [ open, setOpen ] = useState( false );
+import React from "react";
 
-    return( <>
-        <t1>About</t1>
-    </> );
+
+export default class About extends React.Component {
+  render() {
+    return <h1>About</h1>;
+  }
 }
+
+
+// export default About;
