@@ -4,9 +4,6 @@ import React, { useState } from "react";
 import ReactDom from "react-dom/client";
 import { Link } from "react-router-dom";
 import "./appbar.css";
-import Home from "../../../views/home";
-import Sobre from "../../../views/sobre";
-import About from "../../../views/about";
 
 
 export default function Appbar() {
@@ -23,7 +20,7 @@ export default function Appbar() {
             <appbar-menu>
                 <menu className={ `${ openned && "is-active" }` }>
                     <Link to="/">
-                        Página Principal
+                        Home
                     </Link>
 
                     <Link to="/sobre" >
@@ -41,10 +38,4 @@ export default function Appbar() {
         </appbar-body>
     </appbar> );
 }
-
-    // ReactDom.createRoot(
-    //     document.querySelector( "appbar" )
-    // ).render(
-    //     <Appbar />
-    // );
 

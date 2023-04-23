@@ -1,8 +1,9 @@
 
 
 import React from "react";
-import sobre from "../views/sobre";
-import about from "../views/about";
+import Home from "../views/home";
+import Sobre from "../views/sobre";
+import About from "../views/about";
 
 const routes = {
     "/": () => <Home />,

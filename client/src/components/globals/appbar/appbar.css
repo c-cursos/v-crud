@@ -13,11 +13,11 @@ appbar {
 }
 appbar-body {
     display: grid;
-    grid-template-columns: .1fr 1fr .1fr;
+    grid-template-columns: auto .8fr auto;
     width: clamp( 100px, 100%, 1530px );
     height: 81px;
     margin: 0 auto;
-    gap: 2rem;
+    /* gap: 2rem; */
 }
 
 appbar-body :nth-child( 1n ) {
@@ -34,6 +34,9 @@ appbar-brand {
 appbar-options {
     height: 100%;
 }
+appbar-body > appbar-menu {
+    width: 100%;
+}
 appbar-body > appbar-menu > menu {
     grid-auto-flow: column;
     justify-content: center;
@@ -49,4 +52,11 @@ appbar-body > appbar-menu > menu a {
 }
 appbar-body > appbar-menu > menu a:hover {
     color: #905;
+}
+
+
+@media only screen and ( max-width: 650px ) {
+    appbar-body > appbar-menu > menu {
+        gap: 1rem;
+    }
 }
