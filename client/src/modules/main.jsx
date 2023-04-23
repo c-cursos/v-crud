@@ -10,20 +10,10 @@ import Sidebar from "../components/globals/sidebar/sidebar";
 import Add from "../utils/add";
 
 
-// ReactDOM.createRoot(
-//     document.querySelector( "appbar" )
-// ).render(
-//     <React.StrictMode>
-//         <BrowserRouter>
-//             <Appbar />
-//         </BrowserRouter>
-//     </React.StrictMode>,
-// );
 
 ReactDOM.createRoot( document.querySelector( "body" ) ).render(
     <React.StrictMode>
         <BrowserRouter>
-            {/* <Appbar /> */}
             <App />
         </BrowserRouter>
     </React.StrictMode>,
