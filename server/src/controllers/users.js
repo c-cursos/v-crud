@@ -10,7 +10,7 @@ const
         database: process.env.DB,
     } );
 
-exports.Userscontroller = {
+exports.UsersController = {
     index: ( req, res, next ) => {
         const
             table = "users";
