@@ -206,6 +206,11 @@ export default function App() {
                 } ) }
             </users>
         </app>
+        <Routes>
+            <Route path="/" element={ <Home /> } />
+            <Route path="/about" element={ <About /> } />
+            <Route path="/sobre" element={ <Sobre /> } />
+        </Routes>
         </main>
     </> );
 }
