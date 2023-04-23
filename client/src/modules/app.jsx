@@ -123,12 +123,12 @@ export default function App() {
 
     return( <>
         <Appbar />
-        <Sidebar />{/*
+        <Sidebar />
         <Routes>
             <Route path="/" element={ <Home /> } />
             <Route path="/about" element={ <About /> } />
             <Route path="/sobre" element={ <Sobre /> } />
-        </Routes>*/}
+        </Routes>
         <main>
         <app>
             <form>  
@@ -206,11 +206,6 @@ export default function App() {
                 } ) }
             </users>
         </app>
-        <Routes>
-            <Route path="/" element={ <Home /> } />
-            <Route path="/about" element={ <About /> } />
-            <Route path="/sobre" element={ <Sobre /> } />
-        </Routes>
         </main>
     </> );
 }
