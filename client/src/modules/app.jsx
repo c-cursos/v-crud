@@ -119,9 +119,6 @@ export default function App() {
             },
         },
         handler = {
-            // change: ( e, setV ) => {
-            //     setV( e.target.value );
-            // },
         };
 
     return( <>
