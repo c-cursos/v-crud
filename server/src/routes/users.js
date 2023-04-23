@@ -3,16 +3,16 @@
 const 
     express = require( "express" ),
     router = express(),
-    { Userscontroller } = require( "../controllers/users" );
+    { UsersController } = require( "../controllers/users" );
 
 
-router.post( "/create-user", Userscontroller.createUser );
-router.get( "/", Userscontroller.index );
-router.put( "/update-user-name", Userscontroller.updateUserName );
-router.put( "/update-user-email", Userscontroller.updateUserEmail );
-router.put( "/update-user-age", Userscontroller.updateUserAge );
-router.put( "/update-user-gender", Userscontroller.updateUserGender);
-router.delete( "/delete/:id", Userscontroller.deleteUser );
+router.post( "/create-user", UsersController.createUser );
+router.get( "/", UsersController.index );
+router.put( "/update-user-name", UsersController.updateUserName );
+router.put( "/update-user-email", UsersController.updateUserEmail );
+router.put( "/update-user-age", UsersController.updateUserAge );
+router.put( "/update-user-gender", UsersController.updateUserGender);
+router.delete( "/delete/:id", UsersController.deleteUser );
 
 
 
