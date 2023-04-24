@@ -36,7 +36,8 @@ app.get( "/", ( req, res, next ) => {
     res.send( "oi" );
 } );
 /* ==[ users routes ]======================================== */
-app.use( "/users", usersRoutes );
+// app.use( "/users", usersRoutes );
+app.use( "/users", routes.users );
 
 const serverListener = 
     app.listen( process.env.DB_PORT || serverGate, () => {
