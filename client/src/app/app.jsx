@@ -28,7 +28,7 @@ export default function App() {
                     name: name,
                     age: age,
                     gender: gender,
-                    email: email
+                    email: email,
                 } ).then( () => {
                     setUserList( [
                         ...userList,
