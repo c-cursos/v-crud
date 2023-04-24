@@ -17,7 +17,7 @@ export default function App() {
         [ gender, setGender ] ,
         [ newGender, setNewGender ] ,
         [ email, setEmail ] ,
-        [ newEmail, setNewEmail ] ] = useState( "" ),
+        [ newEmail, setNewEmail ] ] = [useState( "" )],
         [ age, setAge ] = useState( 0 ),
         [ newAge, setNewAge ] = useState( 0 ),
         [ userList, setUserList ] = useState( [] ),
