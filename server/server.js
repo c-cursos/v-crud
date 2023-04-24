@@ -41,7 +41,6 @@ app.use( "/users", routes.users );
 const serverListener = 
     app.listen( process.env.DB_PORT || serverGate, () => {
         console.warn( 
-            // `> server: http://${ process.env.DB_HOST }:${ serverListener.address().port }` );
             `> server: http://${ process.env.DB_HOST }:${ serverListener.address().port }` );
 } );
 
