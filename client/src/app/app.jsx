@@ -11,13 +11,13 @@ import Sobre from "../views/sobre";
 import About from "../views/about";
 
 export default function App() {
-    const 
-        [ name, setName ] = useState( "" ),
-        [ newName, setNewName ] = useState( "" ),
-        [ gender, setGender ] = useState( "" ),
-        [ newGender, setNewGender ] = useState( "" ),
-        [ email, setEmail ] = useState( "" ),
-        [ newEmail, setNewEmail ] = useState( "" ),
+    const [
+        [ name, setName ] ,
+        [ newName, setNewName ] ,
+        [ gender, setGender ] ,
+        [ newGender, setNewGender ] ,
+        [ email, setEmail ] ,
+        [ newEmail, setNewEmail ] ] = useState( "" ),
         [ age, setAge ] = useState( 0 ),
         [ newAge, setNewAge ] = useState( 0 ),
         [ userList, setUserList ] = useState( [] ),
