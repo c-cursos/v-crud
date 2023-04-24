@@ -13,7 +13,6 @@ const   ceo = require( "./src/utils/ceo" ),
 const routes = {
     users: require( "./src/routes/users" ),
 };
-// const usersRoutes = require( "./src/routes/users" );
 
 app.use( express.json() );
 app.use( express.urlencoded( { extended: false } ) );
@@ -47,3 +46,4 @@ const serverListener =
 } );
 
 module.exports = app;
+
