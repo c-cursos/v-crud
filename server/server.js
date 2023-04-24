@@ -10,10 +10,10 @@ const   ceo = require( "./src/utils/ceo" ),
         path = require( "path" );
         require( "dotenv" ).config();
 
-// const routes = {
-//     users: require( "./src/routes/users" ),
-// };
-const usersRoutes = require( "./src/routes/users" );
+const routes = {
+    users: require( "./src/routes/users" ),
+};
+// const usersRoutes = require( "./src/routes/users" );
 
 app.use( express.json() );
 app.use( express.urlencoded( { extended: false } ) );
