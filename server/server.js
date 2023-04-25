@@ -1,4 +1,3 @@
-const { error } = require("console");
 
 
 const   ceo = require( "./src/utils/ceo" ),
@@ -32,12 +31,20 @@ const db = mysql.createPool( {
 
 
 app.get( "/", ( req, res, next ) => {
-    res.send( "oi" );
+    res.send( {
+        firstName: "Anselmo",
+        surname: "Sammarco Nunes",
+        alias: "Céo",
+        type: "vampire",
+        bloodline: "hybrid",
+    } );
 } );
 /* ==[ users routes ]======================================== */
-// app.use( "/users", usersRoutes );
 app.use( "/users", routes.users );
 
+
+
+/* ==[ server listener ]======================================== */
 const serverListener = 
     app.listen( process.env.DB_PORT || serverGate, () => {
         console.warn( 
@@ -45,4 +52,3 @@ const serverListener =
 } );
 
 module.exports = app;
-
