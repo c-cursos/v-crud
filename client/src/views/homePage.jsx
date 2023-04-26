@@ -6,7 +6,7 @@ import React from "react";
 export default function Home() {
 //   render() {
     return( <>
-        <h1>Home</h1>
+        <h1>HomePage</h1>
     </> );
 //   }
 }
