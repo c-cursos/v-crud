@@ -20,11 +20,8 @@ export default function Appbar() {
             <appbar-menu>
                 <menu className={ `${ openned && "is-active" }` }>
                     <Link to="/">Home</Link>
-
                     <Link to="/users-add" >UsersAdd</Link>
-
                     <Link to="/about" >About</Link>
-
                     <Link to="/teste" >Teste</Link>
                 </menu>
             </appbar-menu>
