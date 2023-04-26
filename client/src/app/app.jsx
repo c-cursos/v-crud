@@ -20,13 +20,13 @@ export default function App() {
         <Appbar />
         <Sidebar />
         <main>
-        <Routes>
-            <Route path="/" element={ <Home /> } />
-            <Route path="/about" element={ <About /> } />
-            <Route path="/users-add" element={ <UsersAdd /> } />
-            <Route path="/teste" element={ <Teste /> } />
-        </Routes>
-        
+            <Routes>
+                <Route path="/" element={ <Home /> } />
+                <Route path="/about" element={ <About /> } />
+                <Route path="/users-add" element={ <UsersAdd /> } />
+                <Route path="/teste" element={ <Teste /> } />
+            </Routes>
+            
         </main>
     </> );
 }
