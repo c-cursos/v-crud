@@ -6,13 +6,13 @@ import "../public/styles/globals/global.css";
 // import * as c from "../controllers/users";
 import Appbar from "../components/globals/appbar/appbar";
 import Sidebar from "../components/globals/sidebar/sidebar";
-import Home from "../views/home";
-import UsersAdd from "../views/users-add";
-import About from "../views/about";
-import Teste from "../views/teste";
+import Home from "./home";
+import Sobre from "./sobre";
+import About from "./about";
+import Teste from "./teste";
 
 export default function App() {
-    /* const 
+    const 
         [ name, setName ] = useState( "" ),
         [ newName, setNewName ] = useState( "" ),
         [ gender, setGender ] = useState( "" ),
@@ -120,18 +120,11 @@ export default function App() {
             },
         },
         handler = {
-        }; */
+        };
 
     return( <>
-        <Appbar />
-        <Sidebar />
         <main>
-        <Routes>
-            <Route path="/" element={ <Home /> } />
-            <Route path="/about" element={ <About /> } />
-            <Route path="/users-add" element={ <UsersAdd /> } />
-            <Route path="/teste" element={ <Teste /> } />
-        </Routes>
+            teste
         {/* <app>
             <form>  
                 <form-body>
