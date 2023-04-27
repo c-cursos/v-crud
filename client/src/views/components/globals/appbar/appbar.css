@@ -55,7 +55,7 @@ appbar-body > appbar-menu > menu a:hover {
 }
 
 
-@media only screen and ( max-width: 650px ) {
+@media only screen and ( width < 650px ) {
     appbar-body > appbar-menu > menu {
         gap: 1rem;
     }
