@@ -13,7 +13,7 @@ const
     group = v => console.group( v ),
     time = v => console.time( v ),
     timeEnd = v => console.timeEnd( v );
-/* -------------------------------- */
+/* ----------------------------------------------- */
 
 
 
