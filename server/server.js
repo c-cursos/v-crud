@@ -7,7 +7,9 @@ const
     app = express(),
     mysql = require( "mysql2" ),
     cors = require( "cors" ),
-    path = require( "path" );
+    path = require( "path" ),
+    cookieParser = require( "cookie-parser" );
+    
     require( "dotenv" ).config();
 
 const routes = {
@@ -15,12 +17,15 @@ const routes = {
     index: require( "./src/routes/index" ),
 };
 
+app.set( "views", path.join( __dirname, "src/views" ) );
+app.set( "view engine", "ejs" );
+
 app.use( express.json() );
 app.use( express.urlencoded( { extended: false } ) );
+app.use( cookieParser() );
 
-// app.set( "views", path.join( __dirname, "./src" + "./views" ) );
-app.set( "views", "./views" );
-app.set( "view engine", "ejs" );
+app.use( express.static( path.join( __dirname, "src/public" ) ) ); // define onde vao estar os arquivos estaticos
+app.use( "/users", express.static( "src/public" ) );
 
 app.use( cors() );
 // app.use( express.static( path.join( __dirname, "build" ) ) );
