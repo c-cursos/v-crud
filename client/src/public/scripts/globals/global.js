@@ -1,16 +1,19 @@
 
+
 'use strict';
 /* [ properties ]
 =================================== */
-const $ = v => document.querySelector( v ),
-        $$ = v => document.querySelectorAll( v );
-const log = v => console.log( v ),
-        table = v => console.table( v ),
-        error = v => console.error( v ),
-        warn = v => console.warn( v ),
-        group = v => console.group( v ),
-        time = v => console.time( v ),
-        timeEnd = v => console.timeEnd( v );
+const 
+    $ = v => document.querySelector( v ),
+    $$ = v => document.querySelectorAll( v ),
+
+    log = v => console.log( v ),
+    table = v => console.table( v ),
+    error = v => console.error( v ),
+    warn = v => console.warn( v ),
+    group = v => console.group( v ),
+    time = v => console.time( v ),
+    timeEnd = v => console.timeEnd( v );
 /* -------------------------------- */
 
 
