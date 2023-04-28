@@ -1,8 +1,7 @@
 
 
 'use strict';
-/* [ properties ]
-=================================== */
+/* ==[ properties ]=============================== */
 const 
     $ = v => document.querySelector( v ),
     $$ = v => document.querySelectorAll( v ),
@@ -18,8 +17,7 @@ const
 
 
 
-/* [ events ]
-=================================== */
+/* ==[ events ]=================================== */
 window.addEventListener( 'load', ev => {
     let links = $$( '[link]' );
 
