@@ -1,0 +1,13 @@
+
+
+teste_db = [
+    table = {
+        users: {
+            id: "",
+            name: "",
+            age: "",
+            gender: "",
+            email: "",
+        }
+    }
+];
