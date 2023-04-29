@@ -48,10 +48,18 @@ app.use( "/users", routes.users );
 
 
 /* ==[ server listener ]======================================== */
-const serverListener = 
-    app.listen( process.env.DB_PORT || serverGate, () => {
-        console.warn( 
-            `> server: http://${ process.env.DB_HOST }:${ serverListener.address().port }` );
+// const serverListener = 
+//     app.listen( process.env.DB_PORT || serverGate, () => {
+//         console.warn( 
+//             `> server: http://${ process.env.DB_HOST }:${ serverListener.address().port }` );
+// } );
+
+// app.listen( process.env.DB_PORT || serverGate );
+
+const port = process.env.DB_PORT || serverGate;
+app.listen( port, () => {
+    console.warn( 
+        `> server: http://${ process.env.DB_HOST }:${ port }` );
 } );
 
 module.exports = app;
