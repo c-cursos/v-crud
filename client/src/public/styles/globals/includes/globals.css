@@ -7,6 +7,8 @@
     --dark2: #212329;   --dark3: #505257;
     
     --light0: #ffffff;  --light1: #f5f5f5;
+
+    --t: #f22;
     
     --pink: #905;   --amber: #ffab00;   --red: #ce3635;
     --azul: #27f;   --green: #006400;   --blue: #149cbe;
@@ -65,15 +67,45 @@ body {
 
 /* ==[ texts ]======================== */
 t1 {
-    font-size: 3em;
+    font-size: 3rem;
     font-weight: 700;
     line-height: 1.2;
+    color: var( --t );
 }
 t2 {
-    font-size: 2.25em;
-    font-weight: 400;
+    font-size: 2.25rem;
+    font-weight: 700;
     line-height: 1.2;
     word-wrap: break-word;
+    color: var( --t );
+}
+t3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1.2;
+    word-wrap: break-word;
+    color: var( --t );
+}
+t4 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    word-wrap: break-word;
+    color: var( --t );
+}
+t5 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.2;
+    word-wrap: break-word;
+    color: var( --t );
+}
+t6 {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.2;
+    word-wrap: break-word;
+    color: var( --t );
 }
 p { word-wrap: break-word; }
 

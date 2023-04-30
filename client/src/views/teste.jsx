@@ -8,7 +8,7 @@ export default function App() {
 
     return( <>
         <main>
-            Teste
+            <t1>Teste</t1>
         </main>
     </> );
 }
