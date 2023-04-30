@@ -12,10 +12,6 @@ const
     
     require( "dotenv" ).config();
 
-const routes = {
-    users: require( "./src/routes/users" ),
-    index: require( "./src/routes/index" ),
-};
 
 app.set( "views", path.join( __dirname, "src/views" ) );
 app.set( "view engine", "ejs" );
@@ -40,9 +36,12 @@ const db = mysql.createPool( {
 
 
 
-
+/* ==[ routes ]======================================== */
+const routes = {
+    users: require( "./src/routes/users" ),
+    index: require( "./src/routes/index" ),
+};
 app.use( "/", routes.index );
-/* ==[ users routes ]======================================== */
 app.use( "/users", routes.users );
 
 
