@@ -5,7 +5,7 @@ import "./about.css";
 
 
 export default class About extends React.Component {
-    render() { return( <>
+    render() { document.title = "About"; return( <>
         <galerry>
             <t1>About</t1>
             <hr />

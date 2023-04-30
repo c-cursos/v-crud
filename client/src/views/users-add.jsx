@@ -5,6 +5,7 @@ import ceo from "../utils/ceo";
 import "../public/styles/globals/global.css";
 
 export default function App() {
+    document.title = "Users";
     const 
         [ name, setName ] = useState( "" ),
         [ newName, setNewName ] = useState( "" ),

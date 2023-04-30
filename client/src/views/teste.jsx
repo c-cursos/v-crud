@@ -5,7 +5,7 @@ import ceo from "../utils/ceo";
 import "../public/styles/globals/global.css";
 
 export default function App() {
-
+    document.title = "Teste";
     return( <>
         <main>
             <t1>Teste</t1>
