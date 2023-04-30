@@ -8,23 +8,23 @@ const
     mysql = require( "mysql2" ),
     cors = require( "cors" ),
     path = require( "path" ),
+    http = require( "http" ),
     cookieParser = require( "cookie-parser" );
     
     require( "dotenv" ).config();
 
 
-app.set( "views", path.join( __dirname, "src/views" ) );
 app.set( "view engine", "ejs" );
+// app.set( "views", path.join( __dirname, "./src/pages" ) );
+app.set( "views", path.resolve( "src", "views" ) );
 
 app.use( express.json() );
 app.use( express.urlencoded( { extended: false } ) );
 app.use( cookieParser() );
 
-app.use( express.static( path.join( __dirname, "src/public" ) ) ); // define onde vao estar os arquivos estaticos
-app.use( "/users", express.static( "src/public" ) );
+app.use( express.static( path.join( __dirname, "src/public" ) ) );
 
 app.use( cors() );
-// app.use( express.static( path.join( __dirname, "build" ) ) );
 
 const db = mysql.createPool( {
     host: process.env.DB_HOST,
@@ -44,8 +44,9 @@ const routes = {
 app.use( "/", routes.index );
 app.use( "/users", routes.users );
 
-
-
+app.use( (req, res, next ) => {
+    return res.status( 404 ).render( "page404" );
+} );
 /* ==[ server listener ]======================================== */
 // const serverListener = 
 //     app.listen( process.env.DB_PORT || serverGate, () => {
@@ -54,9 +55,9 @@ app.use( "/users", routes.users );
 // } );
 
 // app.listen( process.env.DB_PORT || serverGate );
-
 const port = process.env.DB_PORT || serverGate;
-app.listen( port, () => {
+
+http.createServer( app ).listen( port, () => {
     console.warn( 
         `> server: http://${ process.env.DB_HOST }:${ port }` );
 } );
