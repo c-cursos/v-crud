@@ -8,7 +8,6 @@ import FormDialog from  "../dialogs/dialog";
 
 export default function Card( props ) {
     const [ open, setOpen ] = React.useState( false );
-    // const [ open, setOpen ] = useState( false );
 
     const handler = {
         open: () => { setOpen( true ); },

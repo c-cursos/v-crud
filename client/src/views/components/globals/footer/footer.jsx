@@ -13,9 +13,4 @@ export default function Footer() {
     </> );
 }
 
-ReactDom.createRoot(
-    document.querySelector( "footer" )
-).render(
-    <Footer />
-);
 

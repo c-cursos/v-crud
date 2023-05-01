@@ -5,27 +5,17 @@ import { Route, Routes } from "react-router-dom";
 import axios from "axios";
 import ceo from "./utils/ceo";
 import "./public/styles/globals/global.css";
-// import * as c from "./controllers/users";
-import Appbar from "./views/components/globals/appbar/appbar";
-import Sidebar from "./views/components/globals/sidebar/sidebar";
-import Home from "./views/home";
-import UsersAdd from "./views/users-add";
-import About from "./views/about";
-import Teste from "./views/teste";
+import { Pages } from "./views";
+import { Comps } from "./views/components";
+import AppRoutes from "./routes";
 
 export default function App() {
     
-
     return( <>
-        <Appbar />
-        <Sidebar />
+        <Comps.Appbar />
+        <Comps.Sidebar />
         <main>
-            <Routes>
-                <Route path="/" element={ <Home /> } />
-                <Route path="/about" element={ <About /> } />
-                <Route path="/users-add" element={ <UsersAdd /> } />
-                <Route path="/teste" element={ <Teste /> } />
-            </Routes>
+            <AppRoutes />
             app
         </main>
     </> );

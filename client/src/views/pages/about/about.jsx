@@ -5,6 +5,10 @@ import "./about.css";
 
 
 export default class About extends React.Component {
+    constructor( props ) {
+        super( props );
+    }
+    
     render() { document.title = "About"; return( <>
         <galerry>
             <t1>About</t1>
