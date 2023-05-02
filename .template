@@ -1,7 +1,8 @@
 
 
-// recover mysql root password:
+/* recover mysql root password:
 https://www.techrepublic.com/article/how-to-set-change-and-recover-a-mysql-root-password/
+*/
 
 Server{
     package{
