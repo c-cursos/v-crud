@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 // import { Pages } from "./views";
-import { Pages } from "../views/index";
+import { Pages } from "../app/index";
 
 export default function AppRoutes() {
     
